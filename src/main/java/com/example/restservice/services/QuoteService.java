@@ -1,21 +1,12 @@
 package com.example.restservice.services;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.context.annotation.Bean;
-import org.springframework.http.client.SimpleClientHttpRequestFactory;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.example.restservice.models.Quote;
 
+@Service
 public class QuoteService {
-	
-	@Autowired
-	RestTemplate restTemplate;
-	
-	public QuoteService() {
-		
-	}
 	
 	public String getQuote() {
 

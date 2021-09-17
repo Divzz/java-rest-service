@@ -21,10 +21,11 @@ public class EmployeeController {
 
 	 private final EmployeeRepository repository;
 	 
+	 @Autowired
 	 private final QuoteService quoteService;
 
 	 EmployeeController(EmployeeRepository repository) {
-	    this.quoteService = new QuoteService();
+		this.quoteService = new QuoteService();
 		this.repository = repository;
 	  }
 
