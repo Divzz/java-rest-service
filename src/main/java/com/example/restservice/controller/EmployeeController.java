@@ -2,6 +2,7 @@ package com.example.restservice.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.restservice.models.Employee;
+import com.example.restservice.services.QuoteService;
 import com.example.restservice.repository.EmployeeRepository;
 import com.example.restservice.utilities.EmployeeNotFoundException;
 
@@ -18,16 +20,23 @@ import com.example.restservice.utilities.EmployeeNotFoundException;
 public class EmployeeController {
 
 	 private final EmployeeRepository repository;
+	 
+	 private final QuoteService quoteService;
 
 	 EmployeeController(EmployeeRepository repository) {
-	    this.repository = repository;
+	    this.quoteService = new QuoteService();
+		this.repository = repository;
 	  }
 
 	 @GetMapping("/health")
-	 public String index() {
+	 public String health() {
 			return "STATUS: OK";
 		}
 
+	 @GetMapping("/get_quote")
+	 public String get_quote() {
+		 return (quoteService.getQuote());
+		}
 
 	  // Aggregate root
 	  // tag::get-aggregate-root[]
